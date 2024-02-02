@@ -1,0 +1,28 @@
+{
+  "author": {
+    "name": "Arnaud Commelin",
+    "email": "arnaud.commelin@gmail.com"
+  },
+  "name": "vilborade",
+  "version": "1.0.0",
+  "license": "GPL-3.0-or-later",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.11",
+    "@vitest/coverage-v8": "^1.2.2",
+    "dotenv-cli": "^7.3.0",
+    "prettier": "^3.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  },
+  "scripts": {
+    "prebuild": "rm -Rf dist/",
+    "build": "tsc",
+    "lint": "prettier -w .",
+    "test:unit": "dotenv -e .env -- yarn vitest --config vitest.unit.config.ts --coverage"
+  },
+  "dependencies": {}
+}
