@@ -38,7 +38,14 @@ type NotionSearchResult = {
   }>;
 };
 
+export type NotionConfig = {
+  parentPageId: string;
+  token: string;
+}
+
 export class NotionPageRepository implements PageRepository {
+  constructor(private readonly config: NotionConfig) {}
+
   private static async wrappedFetch(
     fetch: Promise<Response>,
   ): Promise<Response> {
@@ -72,14 +79,10 @@ export class NotionPageRepository implements PageRepository {
     };
   }
 
-  private static mapInputToNotion(page: Page): NotionData {
-    if (!process.env.NOTION_PARENT_PAGE_ID) {
-      throw new Error("NOTION_PARENT_PAGE_ID is not set!");
-    }
-
+  private mapInputToNotion(page: Page): NotionData {
     return {
       parent: {
-        page_id: process.env.NOTION_PARENT_PAGE_ID,
+        page_id: this.config.parentPageId,
       },
       properties: {
         title: {
@@ -127,13 +130,9 @@ export class NotionPageRepository implements PageRepository {
   }
 
   private getHeaders(): { headers: HeadersInit } {
-    if (!process.env.NOTION_TOKEN) {
-      throw new Error("NOTION_TOKEN is not set!");
-    }
-
     return {
       headers: {
-        Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
+        Authorization: `Bearer ${this.config.token}`,
         "Content-Type": "application/json",
         "Notion-Version": "2022-06-28",
       },
@@ -143,7 +142,7 @@ export class NotionPageRepository implements PageRepository {
   async create(page: Page): Promise<void> {
     await this.post(
       "https://api.notion.com/v1/pages",
-      NotionPageRepository.mapInputToNotion(page),
+      this.mapInputToNotion(page),
     );
 
     return;
