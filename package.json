@@ -3,7 +3,7 @@
     "name": "Arnaud Commelin",
     "email": "arnaud.commelin@gmail.com"
   },
-  "name": "vilborade",
+  "name": "vitest-notion-reporter",
   "version": "1.0.0",
   "license": "GPL-3.0-or-later",
   "engines": {
