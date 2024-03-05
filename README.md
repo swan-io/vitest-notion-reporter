@@ -48,3 +48,7 @@ export default defineConfig(<UserWorkspaceConfig>{
 
 ## License
 GPL >=3.0
+
+## Links
+
+- ⚖️ [**License**](./LICENSE)
