@@ -2,6 +2,10 @@
 
 Eager to make your unit tests a source of documentation for everyone in your company? Here comes a vitest reporter that creates documentation on Notion from your tests `describe`s and `it`s :rocket:
 
+## Prerequisites
+
+You will need to [**setup an integration in your Notion**](https://www.notion.so/help/create-integrations-with-the-notion-api) able to write on the root page you'll have for documentation.
+
 ## Installation
 
 ```bash
