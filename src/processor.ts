@@ -1,5 +1,4 @@
 import { PageRepository } from "./repositories/page-repository.gateway";
-import { NotionPageRepository } from "./repositories/notion.page.repository";
 
 export type Task = {
   name: string;
@@ -13,9 +12,7 @@ export type Page = {
 };
 
 export class Processor {
-  constructor(
-    private readonly documentRepository: PageRepository = new NotionPageRepository(),
-  ) {}
+  constructor(private readonly documentRepository: PageRepository) {}
 
   private static generateLine(tasks: Task[], depth: number = 0): string {
     return tasks

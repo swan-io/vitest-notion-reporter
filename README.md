@@ -42,16 +42,15 @@ import { NotionReporter } from "@swan-io/vitest-notion-reporter";
 
 export default defineConfig(<UserWorkspaceConfig>{
   test: {
-    reporters: [new NotionReporter({
-      token: "<YOUR-NOTION-TOKEN>",
-      parentPageId: "<ROOT-PAGE-FOR-DOCUMENTATION-ID>"
-    })],
+    reporters: [
+      new NotionReporter({
+        token: "<YOUR-NOTION-TOKEN>",
+        parentPageId: "<ROOT-PAGE-FOR-DOCUMENTATION-ID>",
+      }),
+    ],
   },
 });
 ```
-
-## License
-GPL >=3.0
 
 ## Links
 
