@@ -1,7 +1,7 @@
-import { beforeAll, describe, expect, it } from "vitest";
-import { Processor, Task, Page } from "../src/processor";
-import { InMemoryPageRepository } from "./repositories/in-memory.page.repository";
 import { randomUUID } from "crypto";
+import { beforeAll, describe, expect, it } from "vitest";
+import { Page, Processor, Task } from "../src/processor";
+import { InMemoryPageRepository } from "./repositories/in-memory.page.repository";
 
 describe("Create documentation from tests", () => {
   let promise: Promise<void>;

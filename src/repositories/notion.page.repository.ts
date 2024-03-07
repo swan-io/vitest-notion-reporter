@@ -41,7 +41,7 @@ type NotionSearchResult = {
 export type NotionConfig = {
   parentPageId: string;
   token: string;
-}
+};
 
 export class NotionPageRepository implements PageRepository {
   constructor(private readonly config: NotionConfig) {}
@@ -129,7 +129,7 @@ export class NotionPageRepository implements PageRepository {
     );
   }
 
-  private getHeaders(): { headers: HeadersInit } {
+  private getHeaders(): { headers: NonNullable<RequestInit["headers"]> } {
     return {
       headers: {
         Authorization: `Bearer ${this.config.token}`,
@@ -154,7 +154,7 @@ export class NotionPageRepository implements PageRepository {
       { query },
     );
 
-    const pages: NotionSearchResult = await searchPageByNameResponse.json();
+    const pages = (await searchPageByNameResponse.json()) as NotionSearchResult;
 
     return pages.results.find((result) =>
       result.properties.title.title.find(
@@ -168,7 +168,7 @@ export class NotionPageRepository implements PageRepository {
       `https://api.notion.com/v1/blocks/${page.id}/children`,
     );
 
-    const blocks: NotionSearchResult = await getBlockByIdResponse.json();
+    const blocks = (await getBlockByIdResponse.json()) as NotionSearchResult;
 
     const blockId = blocks.results[0]?.id;
 

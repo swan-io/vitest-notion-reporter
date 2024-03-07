@@ -1,5 +1,4 @@
 import { defineConfig, UserWorkspaceConfig } from "vitest/config";
-import { NotionReporter } from "./dist/src/presentation/reporter";
 
 export default defineConfig(<UserWorkspaceConfig>{
   test: {
@@ -12,7 +11,7 @@ export default defineConfig(<UserWorkspaceConfig>{
     },
     environment: "node",
     outputFile: "junit.xml",
-    reporters: ["junit", "default", new NotionReporter()],
+    reporters: ["junit", "default"],
     coverage: {
       include: ["src/**/*"],
       exclude: ["src/repositories/**/*", "src/presentation/**/*"],
