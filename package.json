@@ -2,7 +2,7 @@
   "name": "@swan-io/vitest-notion-reporter",
   "version": "0.1.0",
   "license": "MIT",
-  "description": "TODO",
+  "description": "A lightweight vitest reporter that sends results on a Notion page",
   "author": "Arnaud Commelin <arnaud.commelin@swan.io>",
   "homepage": "https://github.com/swan-io/vitest-notion-reporter",
   "repository": {
